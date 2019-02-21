@@ -21,13 +21,13 @@ public class Enemy : Character
                     target = BattleController.Instance.GetWeakestEnemy();
                 }
 
-                if(!CastSpell(spellsToCast,null))
+                if(!CastSpell(spellsToCast,target))
                 {
-
+                    BattleController.Instance.DoAttack(this, target);
                 }
                 break;
             case 2:
-                //attack
+                BattleController.Instance.DoAttack(this, target);
                 break;
         }
     }
@@ -40,5 +40,6 @@ public class Enemy : Character
     public override void Die()
     {
         base.Die();
+        BattleController.Instance.characters[1].Remove(this);
     }
 }

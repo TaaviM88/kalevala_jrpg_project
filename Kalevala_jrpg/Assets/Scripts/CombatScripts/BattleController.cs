@@ -12,7 +12,8 @@ public class BattleController : MonoBehaviour
 
     [SerializeField]
     private BattleSpawner[] spawnPoints;
-    
+    [SerializeField]
+    private UIBattleController uicontroller;
     private int actTurn;
     // Start is called before the first frame update
     void Start()
@@ -27,6 +28,9 @@ public class BattleController : MonoBehaviour
         }
         characters.Add(0, new List<Character>());
         characters.Add(1, new List<Character>());
+        FindObjectOfType<BattleLauncher>().Launch();
+        //test
+        uicontroller.UpdateCharacterUI();
     }
 
     public Character GetRandomPlayer()
@@ -83,11 +87,12 @@ public class BattleController : MonoBehaviour
             switch (actTurn)
             {
                 case 0:
-                    // do ui stuff
+                    uicontroller.ToggleActionState(true);
+                    uicontroller.BuildSpellList(GetCurrentCharacter().spells);
                     break;
                 case 1:
                     StartCoroutine(PerformAct());
-                    // do ui stuff
+                    uicontroller.ToggleActionState(false);
                     break;
             }
         }
@@ -100,10 +105,11 @@ public class BattleController : MonoBehaviour
     IEnumerator PerformAct()
     {
         yield return new WaitForSeconds(.75f);
-        if (characters[actTurn][characterTurnIndex].health > 0)
+        if (GetCurrentCharacter().health > 0)
         {
-            characters[actTurn][characterTurnIndex].GetComponent<Enemy>().Act();
+            GetCurrentCharacter().GetComponent<Enemy>().Act();
         }
+        uicontroller.UpdateCharacterUI();
         yield return new WaitForSeconds(1f);
         NextAct();
     }
@@ -112,12 +118,13 @@ public class BattleController : MonoBehaviour
     {
         if (playerIsAttacking)
         {
-            DoAttack(characters[actTurn][characterTurnIndex], character);
+            DoAttack(GetCurrentCharacter(), character);
         }
         else if (playerSelectedSpell != null)
         {
-            if (characters[actTurn][characterTurnIndex].CastSpell(playerSelectedSpell, character))
+            if (GetCurrentCharacter().CastSpell(playerSelectedSpell, character))
             {
+                uicontroller.UpdateCharacterUI();
                 NextAct();
             }
              else 
@@ -130,5 +137,11 @@ public class BattleController : MonoBehaviour
     public void DoAttack(Character attacker, Character target)
     {
         target.Hurt(attacker.attackPower);
+        NextAct();
+    }
+
+    public Character GetCurrentCharacter()
+    {
+        return characters[actTurn][characterTurnIndex];
     }
 }
