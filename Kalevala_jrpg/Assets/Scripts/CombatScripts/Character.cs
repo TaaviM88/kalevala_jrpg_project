@@ -14,25 +14,27 @@ public class Character : MonoBehaviour
 
     public void Hurt(int amount)
     {
-        bool dodged = Random.Range(0f, 1f) > 0.6f;
-        float damageAmount = dodged ? 0f : amount * (100 / (100 + defencePower));
+        //bool dodged = Random.Range(0f, 1f) > 0.6f;
+        //float damageAmount = dodged ? 0f : amount * (100 / (100 + defencePower));
+        int damageAmount = amount - defencePower;
         health = Mathf.Max(health - Mathf.RoundToInt(damageAmount), 0);
 
         if(health == 0)
         {
-            //Die
+            Die();
         }
     }
 
     public void Heal(int amount)
     {
-        int healAmount = Random.Range(0, 1) * (int)(amount + (maxHealth * .33f));
+        int healAmount = amount;
         health = Mathf.Min(health + healAmount, maxHealth);
     }
 
     public void Defend()
     {
         defencePower += (int)(defencePower * .33);
+        Debug.Log($"Def increased {defencePower}");
     }
 
     public bool CastSpell(Spells spell, Character targetCharacter)
@@ -49,6 +51,6 @@ public class Character : MonoBehaviour
 
      public virtual void Die()
     {
-        Destroy(this.gameObject);
+        Destroy(this.gameObject);   
     }
 }

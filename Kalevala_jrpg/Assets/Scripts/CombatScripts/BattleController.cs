@@ -130,7 +130,7 @@ public class BattleController : MonoBehaviour
              else 
              {
                 Debug.LogWarning("Not enough mana to cast that spell!");
-                }
+             }
         }
     }
 
