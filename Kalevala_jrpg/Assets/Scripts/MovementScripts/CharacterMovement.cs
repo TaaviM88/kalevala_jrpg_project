@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(Rigidbody))]
 public class CharacterMovement : MonoBehaviour
 {
-    private Rigidbody2D _rb;
+    //private Rigidbody2D _rb;
+    private Rigidbody _rb;
     [SerializeField]
     private float movementSpeed;
     private SpriteRenderer sprite;
@@ -13,25 +14,26 @@ public class CharacterMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _rb = GetComponent<Rigidbody2D>();
+        //_rb = GetComponent<Rigidbody2D>();
+        _rb = GetComponent<Rigidbody>();
         sprite = GetComponent<SpriteRenderer>();
     }
 
-    public void Move(Vector2 inputVector)
+    public void Move(Vector3 inputVector)
     {
-        if(inputVector.x != Vector2.zero.x)
+        if(inputVector.x != Vector3.zero.x)
         {
-            sprite.flipX = inputVector.normalized.x > 0;
+            sprite.flipX = inputVector.normalized.x < 0;
         }
         inputVector -= inputVector.normalized * movementSpeed;
         _rb.velocity = inputVector;
     }
 
-    public IEnumerator MoveTo(Vector2 targetPosition,System.Action callback, float delay = 0f)
+    public IEnumerator MoveTo(Vector3 targetPosition,System.Action callback, float delay = 0f)
     {
-        while(targetPosition != new Vector2(transform.position.x,transform.position.y))
+        while(targetPosition != new Vector3(transform.position.x,transform.position.y, transform.position.z))
         {
-            transform.position = Vector2.MoveTowards(transform.position, targetPosition, 1f * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, targetPosition, 1f * Time.deltaTime);
             yield return null;
         }
 
@@ -39,7 +41,7 @@ public class CharacterMovement : MonoBehaviour
         callback();
     }
 
-    public void TeleportTo(Vector2 targetPosition)
+    public void TeleportTo(Vector3 targetPosition)
     {
         transform.position = targetPosition;
     }

@@ -11,8 +11,9 @@ GameObject:
   - component: {fileID: 8989753499744544656}
   - component: {fileID: 8989753499744544659}
   - component: {fileID: 8989753499744544658}
-  - component: {fileID: 8989753499744544661}
-  - component: {fileID: 8989753499744544660}
+  - component: {fileID: 9136730700348276158}
+  - component: {fileID: 4011272277615981368}
+  - component: {fileID: 5386430976622707890}
   m_Layer: 0
   m_Name: PlayerFieldView
   m_TagString: Player
@@ -94,41 +95,47 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc945266cb1b4a240b271e738b6273ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 0
---- !u!50 &8989753499744544661
-Rigidbody2D:
-  serializedVersion: 4
+  movementSpeed: 2
+--- !u!54 &9136730700348276158
+Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8989753499744544663}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
+  serializedVersion: 2
   m_Mass: 1
-  m_LinearDrag: 0
+  m_Drag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
+  m_UseGravity: 0
+  m_IsKinematic: 0
   m_Interpolate: 0
-  m_SleepingMode: 1
+  m_Constraints: 112
   m_CollisionDetection: 0
-  m_Constraints: 4
---- !u!58 &8989753499744544660
-CircleCollider2D:
+--- !u!135 &4011272277615981368
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8989753499744544663}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
   m_Enabled: 1
-  m_Density: 1
+  serializedVersion: 2
+  m_Radius: 0.57
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!136 &5386430976622707890
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8989753499744544663}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.24
+  m_Enabled: 1
+  m_Radius: 0.16
+  m_Height: 0.48
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
