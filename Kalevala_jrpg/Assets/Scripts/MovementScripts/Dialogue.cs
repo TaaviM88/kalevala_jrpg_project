@@ -13,10 +13,14 @@ public class Dialogue : MonoBehaviour
     
     public void StartDialogue(string [] dialogue)
     {
-        dialogueIndex = 0;
-        this.dialogue = dialogue;
-        dialoguePanel.SetActive(true);
-        dialogueText.text = dialogue[dialogueIndex];
+        if(dialoguePanel.activeSelf == false)
+        {
+            dialogueIndex = 0;
+            this.dialogue = dialogue;
+            dialoguePanel.SetActive(true);
+            dialogueText.text = dialogue[dialogueIndex];
+        }
+        
     }
 
     public void NextLine()

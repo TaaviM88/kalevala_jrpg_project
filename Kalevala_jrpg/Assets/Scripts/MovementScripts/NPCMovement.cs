@@ -33,7 +33,6 @@ public class NPCMovement : CharacterMovement
             int roll = Random.Range(0, 3);
             Vector3 destination = currentPosition + movementDirections[roll];
             StartCoroutine(this.MoveTo(destination, Wander, Random.Range(2, 5)));
-            Debug.Log(movementDirections[roll]);
         }
         else
         {
