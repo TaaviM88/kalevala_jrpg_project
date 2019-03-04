@@ -26,7 +26,9 @@ public class BattleController : MonoBehaviour
         {
             Instance = this;
         }
+        //pelaajat 0
         characters.Add(0, new List<Character>());
+        //Viholliset 1
         characters.Add(1, new List<Character>());
         FindObjectOfType<BattleLauncher>().Launch();
         //test

@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class NPCMovement : CharacterMovement
 {
-    private Vector2[] movementDirections = new Vector2[] { Vector2.up, Vector2.right, Vector2.down, Vector2.left };
-    private Vector2 spawnPosition;
+    private Vector3[] movementDirections = new Vector3[] { Vector2.up, Vector2.right, Vector2.down, Vector2.left };
+    private Vector3 spawnPosition;
 
     // Start is called before the first frame update
     void Start()
@@ -16,7 +16,7 @@ public class NPCMovement : CharacterMovement
 
     public void Wander()
     {
-        Vector2 currentPosition = transform.position;
+        Vector3 currentPosition = transform.position;
         if(currentPosition == spawnPosition)
         {
             int roll = Random.Range(0, 3);
