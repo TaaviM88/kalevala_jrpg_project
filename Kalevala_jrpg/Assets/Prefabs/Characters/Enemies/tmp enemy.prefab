@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1029026148466803133}
   - component: {fileID: 2534867762686626346}
   - component: {fileID: 8060652566198706487}
-  - component: {fileID: 2483638189653643927}
+  - component: {fileID: 843710108115444329}
   m_Layer: 0
   m_Name: tmp enemy
   m_TagString: Character
@@ -26,13 +26,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4386234430159056355}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!212 &2534867762686626346
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -102,7 +102,7 @@ MonoBehaviour:
   spells:
   - {fileID: 501445145751600052, guid: e93c345f6582061469c42c66ec013380, type: 3}
   - {fileID: 501445145751600052, guid: 474477ad82067334691c93865118dcef, type: 3}
---- !u!61 &2483638189653643927
+--- !u!61 &843710108115444329
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -115,7 +115,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -0.06423825}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -126,5 +126,5 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.32, y: 0.48}
+  m_Size: {x: 0.32, y: 0.3515235}
   m_EdgeRadius: 0
