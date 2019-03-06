@@ -31,11 +31,13 @@ public class Spells : MonoBehaviour
     public void Cast(Character target)
     {
         targetPosition = target.transform.position;
-        if(spellType == SpellType.Attack)
+
+        if (spellType == SpellType.Attack)
         {
             target.Hurt(power);
         }
-        else if(spellType == SpellType.Heal)
+
+        else if (spellType == SpellType.Heal)
         {
             target.Heal(power);
             Debug.Log("Healing!");

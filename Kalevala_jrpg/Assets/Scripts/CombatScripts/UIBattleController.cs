@@ -14,10 +14,13 @@ public class UIBattleController : MonoBehaviour
     [SerializeField]
     private TMP_Text[] characterInfo;
 
+    private UIBattleController ui;
+
     // Start is called before the first frame update
     void Start()
     {
         spellPanel.SetActive(false);
+        ui = GameObject.Find("CharacterPanel").GetComponent<UIBattleController>();
     }
 
     // Update is called once per frame
@@ -79,6 +82,9 @@ public class UIBattleController : MonoBehaviour
     {
         BattleController.Instance.playerSelectedSpell = null;
         BattleController.Instance.playerIsAttacking = true;
+
+        //Tää BattleControlleriin
+        ui.ToggleSpellPanel(false);
     }
 
     public void UpdateCharacterUI()
