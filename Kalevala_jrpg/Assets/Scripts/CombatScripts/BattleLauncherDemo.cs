@@ -12,5 +12,13 @@ public class BattleLauncherDemo : MonoBehaviour
     public void Launch()
     {
         launcher.PrepareBattle(enemies, players);
-    }   
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            Launch();
+        }
+    }
 }

@@ -9,9 +9,12 @@ public class Gateway : MonoBehaviour
     private string SceneName;
 
     [SerializeField]
-    private Vector2 spawnLocation;
+    private Vector3 spawnLocation;
 
+    [SerializeField]
+    private bool Enemy;
 
+    /*
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
@@ -19,5 +22,28 @@ public class Gateway : MonoBehaviour
             GatewayManager.Instance.SetSpawnPosition(spawnLocation);
             SceneManager.LoadScene(SceneName);
         }
+    }
+    */
+
+    public void ChangeScene()
+    {
+        if (!Enemy) {
+            MoveToScene();
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            MoveToScene();
+        }
+    }
+
+    private void MoveToScene()
+    {
+        GatewayManager.Instance.SetSpawnPosition(spawnLocation);
+        GatewayManager.Instance.IsBattleScene(Enemy);
+        SceneManager.LoadScene(SceneName);
     }
 }

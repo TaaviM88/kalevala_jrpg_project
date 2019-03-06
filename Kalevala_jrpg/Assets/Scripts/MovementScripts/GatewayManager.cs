@@ -5,9 +5,12 @@ using UnityEngine.SceneManagement;
 
 public class GatewayManager : MonoBehaviour
 {
-    private Vector2 spawnPosition;
+    private Vector3 spawnPosition;
+    private Transform previousPlayerPosition;
     private bool spawnPrepared;
+    private bool battleScene;
     public static GatewayManager Instance { get; set; }
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -31,7 +34,7 @@ public class GatewayManager : MonoBehaviour
         }
     }
    
-    public void SetSpawnPosition(Vector2 spawnPosition)
+    public void SetSpawnPosition(Vector3 spawnPosition)
     {
         spawnPrepared = true;
         this.spawnPosition = spawnPosition;
@@ -39,7 +42,16 @@ public class GatewayManager : MonoBehaviour
 
     private void MovePosition()
     {
-        FindObjectOfType<PlayerMovement>().TeleportTo(spawnPosition);
-        spawnPrepared = false;
+        if (battleScene)
+        {
+            FindObjectOfType<PlayerMovement>().DisablePlayer();
+        }
+            FindObjectOfType<PlayerMovement>().TeleportTo(spawnPosition);
+            spawnPrepared = false;
+    }
+
+    public void IsBattleScene(bool battle)
+    {
+        battleScene = battle;
     }
 }
