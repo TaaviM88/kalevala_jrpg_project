@@ -6,7 +6,8 @@ using UnityEngine.SceneManagement;
 public class GatewayManager : MonoBehaviour
 {
     private Vector3 spawnPosition;
-    private Transform previousPlayerPosition;
+    private Vector3 previousPlayerPosition;
+    private string previousSceneName;
     private bool spawnPrepared;
     private bool battleScene;
     public static GatewayManager Instance { get; set; }
@@ -53,5 +54,19 @@ public class GatewayManager : MonoBehaviour
     public void IsBattleScene(bool battle)
     {
         battleScene = battle;
+    }
+
+    //Tallenetaan edellisen scenen tiedot.
+    public void PreviousSceneData(Vector3 prevPlayer, string prevScene)
+    {
+        previousPlayerPosition = prevPlayer;
+        previousSceneName = prevScene;
+    }
+
+    public void MoveToPrevScene()
+    {
+        SetSpawnPosition(previousPlayerPosition);
+        SceneManager.LoadScene(previousSceneName);
+
     }
 }

@@ -101,6 +101,7 @@ public class BattleController : MonoBehaviour
         else
         {
             Debug.Log("Battle over!");
+            GatewayManager.Instance.MoveToPrevScene();
         }
     }
 
