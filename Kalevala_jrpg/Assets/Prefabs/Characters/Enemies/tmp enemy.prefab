@@ -94,10 +94,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterName: Temp enemy
-  health: 10
-  maxHealth: 10
-  attackPower: 2
-  defencePower: 1
+  health: 100
+  maxHealth: 100
+  attackPower: 50
+  defencePower: 5
   manaPoints: 100
   spells:
   - {fileID: 501445145751600052, guid: e93c345f6582061469c42c66ec013380, type: 3}

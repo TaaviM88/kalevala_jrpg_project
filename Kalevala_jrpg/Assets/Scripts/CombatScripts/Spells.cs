@@ -38,6 +38,7 @@ public class Spells : MonoBehaviour
         else if(spellType == SpellType.Heal)
         {
             target.Heal(power);
+            Debug.Log("Healing!");
         }
     }
 
