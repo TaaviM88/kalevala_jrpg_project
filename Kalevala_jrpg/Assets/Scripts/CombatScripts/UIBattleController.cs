@@ -92,6 +92,7 @@ public class UIBattleController : MonoBehaviour
         for (int i = 0; i < BattleController.Instance.characters[0].Count; i++)
         {
           Character character =  BattleController.Instance.characters[0][i];
+            character.name = character.name.Replace("(Clone)", "");
             characterInfo[i].text = string.Format($"{character.name} HP: {character.health}/{character.maxHealth}, MP:{character.manaPoints}");
         }
     }
