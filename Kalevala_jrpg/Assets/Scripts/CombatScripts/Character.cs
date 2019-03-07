@@ -11,7 +11,7 @@ public class Character : MonoBehaviour
     public int defencePower;
     public int manaPoints;
     public List<Spells> spells;
-
+    private bool canMove = false;
     public void Hurt(int amount)
     {
         bool dodged = Random.Range(0f, 1f) > 0.6f;
@@ -54,5 +54,18 @@ public class Character : MonoBehaviour
      public virtual void Die()
     {
         Destroy(this.gameObject);   
+    }
+
+    public void MoveCharacter(Vector3 pos)
+    {
+        if(canMove)
+        {
+            transform.position = Vector3.MoveTowards(transform.position, pos, 1f * Time.deltaTime);
+        }
+    }
+
+    public void CharacterCanMove(bool can)
+    {
+        canMove = can;
     }
 }

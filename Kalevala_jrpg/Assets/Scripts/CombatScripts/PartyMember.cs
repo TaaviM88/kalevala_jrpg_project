@@ -10,4 +10,5 @@ public class PartyMember : Character
         base.Die();
         BattleController.Instance.characters[0].Remove(this);
     }
+
 }

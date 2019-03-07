@@ -100,5 +100,10 @@ public class UIBattleController : MonoBehaviour
     public void Defend()
     {
         BattleController.Instance.GetCurrentCharacter().Defend();
+        BattleController.Instance.playerSelectedSpell = null;
+        BattleController.Instance.playerIsAttacking = false;
+        BattleController.Instance.playerIsDefending = true;
+        Character c = BattleController.Instance.GetCurrentCharacter();
+        BattleController.Instance.SelectCharacter(c);
     }
 }

@@ -168,17 +168,17 @@ MonoBehaviour:
     supportDitheringCrossFade: 1
     supportRayTracing: 0
     lightLoopSettings:
-      cookieSize: 128
+      cookieSize: 64
       cookieTexArraySize: 16
-      pointCookieSize: 128
+      pointCookieSize: 64
       cubeCookieTexArraySize: 16
       planarReflectionProbeCacheSize: 2
-      planarReflectionTextureSize: 1024
+      planarReflectionTextureSize: 64
       reflectionProbeCacheSize: 64
-      reflectionCubemapSize: 256
+      reflectionCubemapSize: 128
       reflectionCacheCompressed: 0
       planarReflectionCacheCompressed: 0
-      skyReflectionSize: 256
+      skyReflectionSize: 128
       skyLightingOverrideLayerMask:
         serializedVersion: 2
         m_Bits: 0
@@ -189,7 +189,7 @@ MonoBehaviour:
       maxEnvLightsOnScreen: 64
       maxDecalsOnScreen: 512
     hdShadowInitParams:
-      shadowAtlasResolution: 4096
+      shadowAtlasResolution: 128
       maxShadowRequests: 128
       shadowMapsDepthBits: 32
       useDynamicViewportRescale: 1

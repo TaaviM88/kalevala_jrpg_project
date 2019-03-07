@@ -9,7 +9,7 @@ public class BattleController : MonoBehaviour
     public int characterTurnIndex;
     public Spells playerSelectedSpell;
     public bool playerIsAttacking;
-
+    public bool playerIsDefending;
     [SerializeField]
     private BattleSpawner[] spawnPoints;
     [SerializeField]
@@ -67,15 +67,24 @@ public class BattleController : MonoBehaviour
 
     void NextTurn()
     {
+        
         actTurn = actTurn == 0 ? 1 : 0;
+        /*GetCurrentCharacter().MoveCharacter(Vector3.back);
+        GetCurrentCharacter().CharacterCanMove(true);
+        GetCurrentCharacter().MoveCharacter(Vector3.forward);*/
     }
 
     void NextAct()
     {
-        if(characters[0].Count > 0 && characters[1].Count > 0)
+
+        GetCurrentCharacter().CharacterCanMove(true);
+        GetCurrentCharacter().MoveCharacter(Vector3.forward);
+
+        if (characters[0].Count > 0 && characters[1].Count > 0)
         {
             if (characterTurnIndex < characters[actTurn].Count - 1)
             {
+                
                 characterTurnIndex++;
             }
             else
@@ -103,10 +112,14 @@ public class BattleController : MonoBehaviour
             Debug.Log("Battle over!");
             GatewayManager.Instance.MoveToPrevScene();
         }
+
+        //GetCurrentCharacter().MoveCharacter(Vector3.back);
     }
 
     IEnumerator PerformAct()
     {
+        GetCurrentCharacter().CharacterCanMove(true);
+        GetCurrentCharacter().MoveCharacter(Vector3.forward);
         yield return new WaitForSeconds(.75f);
         if (GetCurrentCharacter().health > 0)
         {
@@ -114,6 +127,7 @@ public class BattleController : MonoBehaviour
         }
         uicontroller.UpdateCharacterUI();
         yield return new WaitForSeconds(1f);
+        GetCurrentCharacter().MoveCharacter(-Vector3.forward);
         NextAct();
     }
 
@@ -135,11 +149,16 @@ public class BattleController : MonoBehaviour
                 Debug.LogWarning("Not enough mana to cast that spell!");
              }
         }
+        else if(playerIsDefending)
+        {   
+            NextAct();
+        }
     }
 
     public void DoAttack(Character attacker, Character target)
     {
         target.Hurt(attacker.attackPower);
+
         NextAct();
     }
 
