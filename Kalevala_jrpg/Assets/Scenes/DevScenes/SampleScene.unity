@@ -2479,7 +2479,7 @@ PrefabInstance:
     - target: {fileID: 4709638387271578696, guid: 0ef4c34e55ce8d24399db111882cb69e,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -0.000015258789
+      value: 0.0000076293945
       objectReference: {fileID: 0}
     - target: {fileID: 4709638388993872515, guid: 0ef4c34e55ce8d24399db111882cb69e,
         type: 3}
@@ -2635,6 +2635,54 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SizeDelta.x
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4709638387344826806, guid: 0ef4c34e55ce8d24399db111882cb69e,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: ca249c923f7be0046a0a3bdf405e369a,
+        type: 3}
+    - target: {fileID: 4709638387814211987, guid: 0ef4c34e55ce8d24399db111882cb69e,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: ca249c923f7be0046a0a3bdf405e369a,
+        type: 3}
+    - target: {fileID: 4709638388841542425, guid: 0ef4c34e55ce8d24399db111882cb69e,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: ca249c923f7be0046a0a3bdf405e369a,
+        type: 3}
+    - target: {fileID: 8973308826483744699, guid: 0ef4c34e55ce8d24399db111882cb69e,
+        type: 3}
+      propertyPath: m_havePropertiesChanged
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8973308826483744699, guid: 0ef4c34e55ce8d24399db111882cb69e,
+        type: 3}
+      propertyPath: m_isInputParsingRequired
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 826492376538354245, guid: 0ef4c34e55ce8d24399db111882cb69e,
+        type: 3}
+      propertyPath: m_havePropertiesChanged
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 826492376538354245, guid: 0ef4c34e55ce8d24399db111882cb69e,
+        type: 3}
+      propertyPath: m_isInputParsingRequired
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1827814421718955926, guid: 0ef4c34e55ce8d24399db111882cb69e,
+        type: 3}
+      propertyPath: m_havePropertiesChanged
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1827814421718955926, guid: 0ef4c34e55ce8d24399db111882cb69e,
+        type: 3}
+      propertyPath: m_isInputParsingRequired
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0ef4c34e55ce8d24399db111882cb69e, type: 3}

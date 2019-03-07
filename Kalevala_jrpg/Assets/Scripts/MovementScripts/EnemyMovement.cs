@@ -10,6 +10,16 @@ public class EnemyMovement : CharacterMovement
     [SerializeField]
     private bool wander;
 
+    void Start()
+    {
+        spawnPosition = transform.position;
+        //Laitetaan halutaanko että npc liikkuu vai ei?
+        if (wander)
+        {
+            Wander();
+        }
+    }
+
     public void Wander()
     {
         Vector3 currentPosition = transform.position;

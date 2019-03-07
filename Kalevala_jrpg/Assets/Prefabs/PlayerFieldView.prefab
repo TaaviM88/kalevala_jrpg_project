@@ -95,7 +95,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc945266cb1b4a240b271e738b6273ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 2
+  movementSpeed: 2.5
 --- !u!54 &9136730700348276158
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -135,7 +135,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.16
-  m_Height: 0.48
+  m_Radius: 0.1
+  m_Height: 0.36
   m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: -0.06, z: 0}

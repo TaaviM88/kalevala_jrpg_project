@@ -6,7 +6,7 @@ public class PlayerMovement : CharacterMovement
 {
     private void Update()
     {
-        this.Move(new Vector3(Input.GetAxisRaw("Horizontal"), transform.position.y ,Input.GetAxisRaw("Vertical")));
+        this.Move(new Vector3(Input.GetAxisRaw("Horizontal"), 0 ,Input.GetAxisRaw("Vertical")));
     }
     
     private void OnTriggerStay(Collider other)

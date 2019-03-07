@@ -16,7 +16,9 @@ public class BattleLauncher : MonoBehaviour
     {
         Players = players;
         Enemies = enemies;
-        UnityEngine.SceneManagement.SceneManager.LoadScene(battleSceneName);
+        FindObjectOfType<DisableEverything>().ToggleOn(false);
+        GatewayManager.Instance.UpdateBattleSceneName(battleSceneName);
+        UnityEngine.SceneManagement.SceneManager.LoadScene(battleSceneName,UnityEngine.SceneManagement.LoadSceneMode.Additive);
     }
 
     public void Launch()

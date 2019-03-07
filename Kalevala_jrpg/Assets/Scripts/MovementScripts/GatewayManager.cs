@@ -10,6 +10,7 @@ public class GatewayManager : MonoBehaviour
     private string previousSceneName;
     private bool spawnPrepared;
     private bool battleScene;
+    string battleSceneName;
     public static GatewayManager Instance { get; set; }
     
     // Start is called before the first frame update
@@ -65,8 +66,15 @@ public class GatewayManager : MonoBehaviour
 
     public void MoveToPrevScene()
     {
-        SetSpawnPosition(previousPlayerPosition);
-        SceneManager.LoadScene(previousSceneName);
+        //SetSpawnPosition(previousPlayerPosition);
+        //SceneManager.LoadScene(previousSceneName);
+        //Scene sceneName = SceneManager.GetActiveScene();
+        SceneManager.UnloadSceneAsync(battleSceneName);
+        FindObjectOfType<DisableEverything>().ToggleOn(true);
+    }
 
+    public void UpdateBattleSceneName(string bName)
+    {
+        battleSceneName = bName;
     }
 }

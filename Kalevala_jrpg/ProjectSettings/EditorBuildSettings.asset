@@ -24,9 +24,9 @@ EditorBuildSettings:
     path: Assets/Scenes/GameScenes/BoatCutScene.unity
     guid: 883c895e4b6c09d4d952e3d13f155592
   - enabled: 1
-    path: Assets/Scenes/GameScenes/ForestScene.unity
-    guid: 7ec98cb7547fcbe499cbbb48fe7c0760
-  - enabled: 1
     path: Assets/Scenes/GameScenes/BattleScene1.unity
     guid: 4bc4109956f064a40ab7f0260daa263b
+  - enabled: 1
+    path: Assets/Scenes/GameScenes/ForestScene.unity
+    guid: b43d3dbdbb6630d45978e58116e01339
   m_configObjects: {}

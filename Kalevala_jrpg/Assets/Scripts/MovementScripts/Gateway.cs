@@ -11,7 +11,6 @@ public class Gateway : MonoBehaviour
     [SerializeField]
     private Vector3 spawnLocation;
 
-    [SerializeField]
     private bool Enemy;
 
     /*

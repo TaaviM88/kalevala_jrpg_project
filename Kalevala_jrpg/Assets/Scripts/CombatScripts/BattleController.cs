@@ -59,7 +59,6 @@ public class BattleController : MonoBehaviour
         {
             characters[0].Add(spawnPoints[i + 3].Spawn(players[i]));
         }
-
         for (int i = 0; i < enemies.Count; i++)
         {
             characters[1].Add(spawnPoints[i].Spawn(enemies[i]));
@@ -90,6 +89,7 @@ public class BattleController : MonoBehaviour
             {
                 case 0:
                     uicontroller.ToggleActionState(true);
+                    uicontroller.ToggleSpellPanel(false);
                     uicontroller.BuildSpellList(GetCurrentCharacter().spells);
                     break;
                 case 1:
