@@ -66,20 +66,17 @@ public class BattleController : MonoBehaviour
     }
 
     void NextTurn()
-    {
-        
+    { 
         actTurn = actTurn == 0 ? 1 : 0;
-        /*GetCurrentCharacter().MoveCharacter(Vector3.back);
-        GetCurrentCharacter().CharacterCanMove(true);
-        GetCurrentCharacter().MoveCharacter(Vector3.forward);*/
+        //MoveTeamMembers();
     }
 
     void NextAct()
     {
 
-        GetCurrentCharacter().CharacterCanMove(true);
-        GetCurrentCharacter().MoveCharacter(Vector3.forward);
-
+        /*GetCurrentCharacter().CharacterCanMove(true);
+        GetCurrentCharacter().MoveCharacter(Vector3.right);*/
+        //MoveTeamMembers();
         if (characters[0].Count > 0 && characters[1].Count > 0)
         {
             if (characterTurnIndex < characters[actTurn].Count - 1)
@@ -112,14 +109,10 @@ public class BattleController : MonoBehaviour
             Debug.Log("Battle over!");
             GatewayManager.Instance.MoveToPrevScene();
         }
-
-        //GetCurrentCharacter().MoveCharacter(Vector3.back);
     }
 
     IEnumerator PerformAct()
     {
-        GetCurrentCharacter().CharacterCanMove(true);
-        GetCurrentCharacter().MoveCharacter(Vector3.forward);
         yield return new WaitForSeconds(.75f);
         if (GetCurrentCharacter().health > 0)
         {
@@ -127,12 +120,12 @@ public class BattleController : MonoBehaviour
         }
         uicontroller.UpdateCharacterUI();
         yield return new WaitForSeconds(1f);
-        GetCurrentCharacter().MoveCharacter(-Vector3.forward);
-        NextAct();
+        GoNextAct();
     }
 
     public void SelectCharacter(Character character)
     {
+        MoveTeamMembers();
         if (playerIsAttacking)
         {
             DoAttack(GetCurrentCharacter(), character);
@@ -142,7 +135,7 @@ public class BattleController : MonoBehaviour
             if (GetCurrentCharacter().CastSpell(playerSelectedSpell, character))
             {
                 uicontroller.UpdateCharacterUI();
-                NextAct();
+                GoNextAct();
             }
              else 
              {
@@ -150,20 +143,35 @@ public class BattleController : MonoBehaviour
              }
         }
         else if(playerIsDefending)
-        {   
-            NextAct();
+        {
+            GoNextAct();
         }
+        MoveTeamMembers();
     }
 
     public void DoAttack(Character attacker, Character target)
     {
         target.Hurt(attacker.attackPower);
 
-        NextAct();
+        GoNextAct();
     }
 
     public Character GetCurrentCharacter()
     {
         return characters[actTurn][characterTurnIndex];
+    }
+
+    public void GoNextAct()
+    {
+        NextAct();
+        //MoveTeamMembers();
+    }
+
+    public void MoveTeamMembers()
+    {
+        if (actTurn == 0)
+        {
+            GetCurrentCharacter().GetComponent<PartyMember>().Move();
+        }
     }
 }
