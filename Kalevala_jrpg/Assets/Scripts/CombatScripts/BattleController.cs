@@ -63,6 +63,7 @@ public class BattleController : MonoBehaviour
         {
             characters[1].Add(spawnPoints[i].Spawn(enemies[i]));
         }
+        MoveTeamMembers();  
     }
 
     void NextTurn()
@@ -152,6 +153,13 @@ public class BattleController : MonoBehaviour
     public void DoAttack(Character attacker, Character target)
     {
         target.Hurt(attacker.attackPower);
+
+        GoNextAct();
+    }
+
+    public void DoHeal(Character attacker, Character target)
+    {
+        target.Heal(attacker.attackPower);
 
         GoNextAct();
     }

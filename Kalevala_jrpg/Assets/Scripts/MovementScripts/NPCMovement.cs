@@ -13,6 +13,8 @@ public class NPCMovement : CharacterMovement
     private Dialogue dialogue;
     [SerializeField]
     private bool wander;
+    [SerializeField]
+    private bool cutscene;
 
     // Start is called before the first frame update
     void Start()
@@ -22,6 +24,11 @@ public class NPCMovement : CharacterMovement
         if (wander)
         {
             Wander();
+        }
+
+        if(cutscene)
+        {
+            StartDialogue();
         }
     }
 

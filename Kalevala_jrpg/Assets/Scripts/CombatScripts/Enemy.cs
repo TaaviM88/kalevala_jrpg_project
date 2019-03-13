@@ -19,6 +19,7 @@ public class Enemy : Character
                 if(spellsToCast.spellType == Spells.SpellType.Heal)
                 {
                     target = BattleController.Instance.GetWeakestEnemy();
+                    BattleController.Instance.DoHeal(this, target);
                 }
 
                 if(!CastSpell(spellsToCast,target))
