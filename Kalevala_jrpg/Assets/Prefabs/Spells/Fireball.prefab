@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spellName: Fireball
-  power: 5
+  power: 10
   manaCost: 5
   spellType: 0
 --- !u!1 &7016428052455419661

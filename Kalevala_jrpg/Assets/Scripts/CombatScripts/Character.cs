@@ -15,11 +15,13 @@ public class Character : MonoBehaviour
     public void Hurt(int amount)
     {
         bool dodged = Random.Range(0f, 1f) > 0.6f;
-        float damageAmount = dodged ? 0f : amount * ((100 + defencePower) / 100);
+        //float damageAmount = /*dodged ? 0f : */amount * (100 / (100 + defencePower));
         //int damageAmount = amount - defencePower;
-        health = Mathf.Max(health - Mathf.RoundToInt(damageAmount - defencePower), 0);
+        float damageAmount = amount * ((100 + defencePower) / 100);
+        Debug.Log("DMG: " + damageAmount);
+        health = Mathf.Max(health - Mathf.RoundToInt(damageAmount), 0);
         Debug.Log("HP: " + health);
-
+        Debug.Log("RoundedDMG: " + damageAmount);
         if(health == 0)
         {
             Die();

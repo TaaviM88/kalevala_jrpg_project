@@ -125,10 +125,11 @@ public class BattleController : MonoBehaviour
 
     public void SelectCharacter(Character character)
     {
-        MoveTeamMembers();
+        
         if (playerIsAttacking)
         {
             DoAttack(GetCurrentCharacter(), character);
+            MoveTeamMembers();
         }
         else if (playerSelectedSpell != null)
         {
