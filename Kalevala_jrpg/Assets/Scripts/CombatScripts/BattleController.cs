@@ -32,7 +32,8 @@ public class BattleController : MonoBehaviour
         characters.Add(1, new List<Character>());
         FindObjectOfType<BattleLauncher>().Launch();
         //test
-        uicontroller.UpdateCharacterUI();
+        //uicontroller.UpdateCharacterUI();
+        UpdateUIStats();
     }
 
     public Character GetRandomPlayer()
@@ -83,7 +84,7 @@ public class BattleController : MonoBehaviour
             }
             else
             {
-                Debug.Log("turn: " + actTurn);
+                
                 NextTurn();
                 characterTurnIndex = 0;
                 Debug.Log("turn: " + actTurn);
@@ -106,9 +107,18 @@ public class BattleController : MonoBehaviour
         }
         else
         {
+            PlayersCombatData.Instance.UpdateTeamMemberStats();
+            StartCoroutine(WaitBeforeEndBattle());
             Debug.Log("Battle over!");
             GatewayManager.Instance.MoveToPrevScene();
         }
+    }
+
+    IEnumerator WaitBeforeEndBattle()
+    {
+        yield return new WaitForSeconds(.75f);
+        GatewayManager.Instance.MoveToPrevScene();
+
     }
 
     IEnumerator PerformAct()
@@ -118,7 +128,8 @@ public class BattleController : MonoBehaviour
         {
             GetCurrentCharacter().GetComponent<Enemy>().Act();
         }
-        uicontroller.UpdateCharacterUI();
+        //uicontroller.UpdateCharacterUI();
+        UpdateUIStats();
         yield return new WaitForSeconds(1f);
         GoNextAct();
     }
@@ -135,7 +146,8 @@ public class BattleController : MonoBehaviour
         {
             if (GetCurrentCharacter().CastSpell(playerSelectedSpell, character))
             {
-                uicontroller.UpdateCharacterUI();
+                //uicontroller.UpdateCharacterUI();
+                UpdateUIStats();
                 GoNextAct();
             }
              else 
@@ -181,5 +193,15 @@ public class BattleController : MonoBehaviour
         {
             GetCurrentCharacter().GetComponent<PartyMember>().Move();
         }
+    }
+
+    public void UpdateUIStats()
+    {
+        uicontroller.UpdateCharacterUI();
+    }
+
+    public void BattleInfo(string text)
+    {
+        uicontroller.BattleInfoLog(text);
     }
 }

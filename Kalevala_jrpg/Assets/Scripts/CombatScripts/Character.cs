@@ -12,14 +12,19 @@ public class Character : MonoBehaviour
     public int manaPoints;
     public List<Spells> spells;
     private bool canMove = false;
+
     public void Hurt(int amount)
     {
-        bool dodged = Random.Range(0f, 1f) > 0.6f;
+        bool dodged = Random.Range(0f, 1f) > 0.9f;
+        Debug.Log("dodge " + dodged);
         //float damageAmount = /*dodged ? 0f : */amount * (100 / (100 + defencePower));
         //int damageAmount = amount - defencePower;
-        float damageAmount = amount * ((100 + defencePower) / 100);
+        float damageAmount = dodged ? 0f : amount * ((100 + defencePower) / 100);
+        //float damageAmount = amount * ((100 + defencePower) / 100);
         Debug.Log("DMG: " + damageAmount);
         health = Mathf.Max(health - Mathf.RoundToInt(damageAmount), 0);
+        string log = $"{characterName} takes {damageAmount} damage";
+        BattleController.Instance.BattleInfo(log);
         Debug.Log("HP: " + health);
         Debug.Log("RoundedDMG: " + damageAmount);
         if(health == 0)
@@ -32,13 +37,16 @@ public class Character : MonoBehaviour
     {
         int healAmount = amount;
         health = Mathf.Min(health + healAmount, maxHealth);
-
+        string log = $"{characterName} heals {amount} ";
+        BattleController.Instance.BattleInfo(log);
     }
 
     public void Defend()
     {
         defencePower += (int)(defencePower * .33);
-        Debug.Log($"Def increased {defencePower}");
+        //Debug.Log($"Def increased {defencePower}");
+        string log = $"{characterName} Def increased {defencePower}";
+        BattleController.Instance.BattleInfo(log);
     }
 
     public bool CastSpell(Spells spell, Character targetCharacter)

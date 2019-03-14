@@ -13,7 +13,8 @@ public class UIBattleController : MonoBehaviour
     private Button button;
     [SerializeField]
     private TMP_Text[] characterInfo;
-
+    [SerializeField]
+    private TMP_Text battleInfo;
     private UIBattleController ui;
 
     // Start is called before the first frame update
@@ -105,5 +106,10 @@ public class UIBattleController : MonoBehaviour
         BattleController.Instance.playerIsDefending = true;
         Character c = BattleController.Instance.GetCurrentCharacter();
         BattleController.Instance.SelectCharacter(c);
+    }
+
+    public void BattleInfoLog(string text)
+    {
+        battleInfo.text = text;
     }
 }

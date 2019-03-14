@@ -100,4 +100,5 @@ MonoBehaviour:
   manaPoints: 20
   spells:
   - {fileID: 501445145751600052, guid: e93c345f6582061469c42c66ec013380, type: 3}
-  - {fileID: 501445145751600052, guid: e93c345f6582061469c42c66ec013380, type: 3}
+  - {fileID: 501445145751600052, guid: 474477ad82067334691c93865118dcef, type: 3}
+  partyMemberName: 0

@@ -6,10 +6,29 @@ public class PartyMember : Character
 {
     private Vector3[] movementDirections = new Vector3[] { Vector3.forward, Vector3.back, Vector3.right, Vector3.left };
     private Vector3 spawnPosition;
-
+    public enum PartyMemberName {Ilmarinen, Lemminkainen, Vainamoinen }
+    public PartyMemberName partyMemberName;
     private void Start()
     {
         spawnPosition = transform.position;
+
+        if( 0 < PlayersCombatData.Instance.GetCurrentHP(partyMemberName))
+        {
+            health = PlayersCombatData.Instance.GetCurrentHP(partyMemberName);
+            Debug.Log("Haetaan hp:t " + partyMemberName + "HP on nyt " + health);
+        }
+        else
+        {
+            health = maxHealth;
+        }
+
+        if (0 < PlayersCombatData.Instance.GetCurrentMP(partyMemberName))
+        {
+            manaPoints = PlayersCombatData.Instance.GetCurrentMP(partyMemberName);
+            Debug.Log("Haetaan mp:t " + partyMemberName);
+        }
+
+        BattleController.Instance.UpdateUIStats();
     }
 
     public void Move()
