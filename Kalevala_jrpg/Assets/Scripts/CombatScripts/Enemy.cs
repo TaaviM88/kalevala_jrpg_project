@@ -8,7 +8,7 @@ public class Enemy : Character
     {
         int dieRoll = Random.Range(0, 2);
         Character target = BattleController.Instance.GetRandomPlayer();
-
+        Debug.Log("Die Roll " + dieRoll);
         switch(dieRoll)
         {
             case 0:

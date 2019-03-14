@@ -35,7 +35,7 @@ public class PartyMember : Character
             yield return null;
         }
 
-        //yield return new WaitForSeconds(delay);
+        yield return new WaitForSeconds(delay);
 
     }
 

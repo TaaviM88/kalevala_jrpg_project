@@ -69,24 +69,21 @@ public class BattleController : MonoBehaviour
     void NextTurn()
     { 
         actTurn = actTurn == 0 ? 1 : 0;
-        //MoveTeamMembers();
     }
 
     void NextAct()
     {
 
-        /*GetCurrentCharacter().CharacterCanMove(true);
-        GetCurrentCharacter().MoveCharacter(Vector3.right);*/
-        //MoveTeamMembers();
         if (characters[0].Count > 0 && characters[1].Count > 0)
         {
             if (characterTurnIndex < characters[actTurn].Count - 1)
             {
-                
                 characterTurnIndex++;
+                MoveTeamMembers();
             }
             else
             {
+                Debug.Log("turn: " + actTurn);
                 NextTurn();
                 characterTurnIndex = 0;
                 Debug.Log("turn: " + actTurn);
@@ -95,13 +92,15 @@ public class BattleController : MonoBehaviour
             switch (actTurn)
             {
                 case 0:
+                    
                     uicontroller.ToggleActionState(true);
                     uicontroller.ToggleSpellPanel(false);
                     uicontroller.BuildSpellList(GetCurrentCharacter().spells);
                     break;
                 case 1:
-                    StartCoroutine(PerformAct());
                     uicontroller.ToggleActionState(false);
+                    StartCoroutine(PerformAct());
+                    
                     break;
             }
         }
@@ -172,7 +171,7 @@ public class BattleController : MonoBehaviour
     public void GoNextAct()
     {
         NextAct();
-        //MoveTeamMembers();
+        MoveTeamMembers();
     }
 
     public void MoveTeamMembers()
