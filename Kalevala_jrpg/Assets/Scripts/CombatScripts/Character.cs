@@ -23,6 +23,10 @@ public class Character : MonoBehaviour
         //float damageAmount = amount * ((100 + defencePower) / 100);
         Debug.Log("DMG: " + damageAmount);
         health = Mathf.Max(health - Mathf.RoundToInt(damageAmount), 0);
+        if(dodged == false)
+        {
+
+        }
         string log = $"{characterName} takes {damageAmount} damage";
         BattleController.Instance.BattleInfo(log);
         Debug.Log("HP: " + health);
