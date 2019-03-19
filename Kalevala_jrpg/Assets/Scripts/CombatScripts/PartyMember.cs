@@ -8,7 +8,7 @@ public class PartyMember : Character
     private Vector3 spawnPosition;
     public enum PartyMemberName {Ilmarinen, Lemminkainen, Vainamoinen }
     public PartyMemberName partyMemberName;
-    private void Start()
+    private void Awake()
     {
         spawnPosition = transform.position;
 

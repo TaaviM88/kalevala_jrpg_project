@@ -183,6 +183,7 @@ public class BattleController : MonoBehaviour
 
     public void GoNextAct()
     {
+        uicontroller.ToggleActionState(false);
         NextAct();
         MoveTeamMembers();
     }
